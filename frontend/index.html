@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="icon" href="https://www.asmag.com/upload/pic/case/47060.039625.jpg" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <title> Motion Detection </title>
+
+        <style>
+            h1 {
+                text-align: center;
+                padding-top: 0px;
+            }
+            .img {
+                background-image: url("https://www.webdesignerdepot.com/cdn-origin/uploads/2018/04/featured_nlp.jpg");
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: 100% 100%;
+            }
+            .container {
+                width: 100%;
+                height: 100%;
+            }
+            .toppane {
+                height: 20%;
+                width: 100%;
+            }
+            .lowerpane {
+                width: 100%;
+                height: 80%;
+                position: relative;
+                border-collapse: collapse;
+            }
+            #surveillance-div {
+                display: none;
+            }
+            .button {
+                opacity: 0.9;
+                border: none;
+                color: white;
+                width: 200px;
+                cursor: pointer;
+                font-size: 13px;
+                margin: 4px 2px;
+                transition: 0.3s;
+                padding: 12px 30px;
+                text-align: center;
+                border-radius: 15px;
+                display: inline-block;
+                text-decoration: none;
+                background-color: #f4511e;
+            }
+        </style>
+
+        <script>
+            $(window).ready(function() {
+
+                $("#start").on("click", function() {
+                    $("#start-div").hide()
+                    $("#surveillance-div").show()
+                });
+
+                $("#goback").on("click", function() {
+                    $("#start-div").show()
+                    $("#surveillance-div").hide()
+                });
+
+            });
+        </script>
+    </head>
+
+    <body align="center" class="img">
+        <div class="container">
+            <div class="toppane"> <h1> Video Surveillance - Motion Detection </h1> </div>
+            <div class="lowerpane" id="bottom" align="center">
+                
+                <div id="start-div" style="padding-top: 10%;">
+                    <button id="start" class="button"> View Video Surveillance </button>
+                </div>
+                
+                <div id="surveillance-div">
+                    <img src="{{ url_for('video_feed') }}" style="width:50%; height:50%;" />
+                    <br/>
+                    <button id="goback" type="button" class="button">Go Back</button>
+                </div>
+
+            </div>
+        </div>
+    </body>
+</html>
